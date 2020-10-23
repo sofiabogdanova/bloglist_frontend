@@ -20,7 +20,7 @@ const Blog = ({ blog, removeBlog }) => {
     <div  style={blogStyle}>
       <div>
         {blog.title} {blog.author}
-        <button onClick={toggleVisibility}> {detailsVisible ? 'hide' : 'view'}</button>
+        <button onClick={toggleVisibility} className='viewHideBtn'> {detailsVisible ? 'hide' : 'view'}</button>
         {detailsVisible && <BlogDetails blog={blog} removeBlog={removeBlog}/>}
       </div>
     </div>

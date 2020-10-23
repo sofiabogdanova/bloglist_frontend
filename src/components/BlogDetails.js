@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import blogService from '../services/blogs'
+import 'jest-localstorage-mock'
 
 const BlogDetails = ({ blog, removeBlog }) => {
   const [likes, setLikes] = useState(blog.likes)
@@ -24,6 +25,7 @@ const BlogDetails = ({ blog, removeBlog }) => {
   }
 
   const showRemoveButton = () => {
+    const items = { ...localStorage };
     const user = JSON.parse(localStorage.getItem('loggedBlogListUser'))
     return user.username === blog.user.username
   }
@@ -35,15 +37,12 @@ const BlogDetails = ({ blog, removeBlog }) => {
 
   return (
     <div>
-      <div>
+      <div className="blogUrl">
         {blog.url}
       </div>
-      <div>
+      <div className="blogLikes">
         {likes}
         <button onClick={like}>like</button>
-      </div>
-      <div>
-        {blog.author}
       </div>
       {
         showRemoveButton() &&
