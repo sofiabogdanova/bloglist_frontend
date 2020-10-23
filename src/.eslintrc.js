@@ -1,54 +1,54 @@
 module.exports = {
     "env": {
-    "browser": true,
+        "browser": true,
         "es6": true,
         "jest/globals": true
-},
-"extends": [
-    "eslint:recommended",
-    "plugin:react/recommended"
-],
-    "parserOptions": {
-    "ecmaFeatures": {
-        "jsx": true
     },
-    "ecmaVersion": 2018,
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 2018,
         "sourceType": "module"
-},
-"plugins": [
-    "react", "jest"
-],
+    },
+    "plugins": [
+        "react", "jest"
+    ],
     "rules": {
-    "indent": [
-        "error",
-        2
-    ],
+        "indent": [
+            "error",
+            2
+        ],
         "linebreak-style": [
-        "error",
-        "unix"
-    ],
+            "error",
+            "unix"
+        ],
         "quotes": [
-        "error",
-        "single"
-    ],
+            "error",
+            "single"
+        ],
         "semi": [
-        "error",
-        "never"
-    ],
+            "error",
+            "never"
+        ],
         "eqeqeq": "error",
         "no-trailing-spaces": "error",
         "object-curly-spacing": [
-        "error", "always"
-    ],
+            "error", "always"
+        ],
         "arrow-spacing": [
-        "error", { "before": true, "after": true }
-    ],
+            "error", {"before": true, "after": true}
+        ],
         "no-console": 0,
         "react/prop-types": 0
-},
-"settings": {
-    "react": {
-        "version": "detect"
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
     }
-}
 }
