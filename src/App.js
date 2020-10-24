@@ -67,6 +67,8 @@ const App = () => {
         url: blogObject.url
       }
       const blog = await blogService.create(newBlog)
+      const newBlogs = [...blogs, newBlog]
+      setBlogs(newBlogs)
       blogFormRef.current.toggleVisibility()
       setSuccessMessage(`A new blog ${blog.title} by ${blog.author} added`)
       setTimeout(() => {
@@ -90,7 +92,7 @@ const App = () => {
     <form onSubmit={handleLogin}>
       <div>
                 username
-        <input
+        <input id="username"
           type="text"
           value={username}
           name="Username"
@@ -99,14 +101,14 @@ const App = () => {
       </div>
       <div>
                 password
-        <input
+        <input id="password"
           type="password"
           value={password}
           name="Password"
           onChange={({ target }) => setPassword(target.value)}
         />
       </div>
-      <button type="submit">login</button>
+      <button type="submit" id="login">login</button>
     </form>
   )
 

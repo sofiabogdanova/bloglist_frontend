@@ -1,22 +1,7 @@
 import React, { useState } from 'react'
-import blogService from '../services/blogs'
-import 'jest-localstorage-mock'
 
-const BlogDetails = ({ blog, removeBlog }) => {
+const BlogDetails = ({ blog, removeBlog, likeBlog }) => {
   const [likes, setLikes] = useState(blog.likes)
-
-  const like = async (event) => {
-    const newLikes = likes + 1
-    setLikes(newLikes)
-    let likedBlog = {
-      user: blog.user,
-      likes: newLikes,
-      author: blog.author,
-      title: blog.title,
-      url: blog.url
-    }
-    blogService.update(blog.id, likedBlog)
-  }
 
   const confirmDeletion = async () => {
     if (window.confirm(`Remove blog "${blog.title}"?`)) {
@@ -24,8 +9,13 @@ const BlogDetails = ({ blog, removeBlog }) => {
     }
   }
 
+  const like = () => {
+    likeBlog()
+    const newLikes = likes + 1
+    setLikes(newLikes)
+  }
+
   const showRemoveButton = () => {
-    const items = { ...localStorage };
     const user = JSON.parse(localStorage.getItem('loggedBlogListUser'))
     return user.username === blog.user.username
   }
