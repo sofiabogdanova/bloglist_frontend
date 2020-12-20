@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-const BlogForm = ({createBlog}) => {
+const BlogForm = ({addBlog}) => {
     const [title, setTitle] = useState('')
     const [author, setAuthor] = useState('')
     const [url, setUrl] = useState('')
@@ -25,7 +25,7 @@ const BlogForm = ({createBlog}) => {
             author: author,
             url: url
         }
-        createBlog(newBlog)
+        addBlog(newBlog)
     }
     return (
         <form onSubmit={createNewBlog}>

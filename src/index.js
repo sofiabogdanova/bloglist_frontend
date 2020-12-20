@@ -1,14 +1,16 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
+import {Provider, useDispatch} from 'react-redux'
 import { combineReducers } from 'redux'
 import App from './App'
 import store from './store'
 
 import notificationReducer from './reducers/notificationReducer'
+import blogReducer, {initializeBlogs} from "./reducers/blogReducer";
 
 const reducer = combineReducers({
-    notification: notificationReducer
+    notification: notificationReducer,
+    blogs: blogReducer,
 })
 
 ReactDOM.render(
