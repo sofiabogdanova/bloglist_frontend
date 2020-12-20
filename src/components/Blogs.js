@@ -4,27 +4,13 @@ import { connect } from 'react-redux'
 import {notify} from "../reducers/notificationReducer";
 import Blog from "./Blog";
 import blogService from "../services/blogs";
+import {removeBlog, updateBlog} from "../reducers/blogReducer";
 
 const Blogs = (props) => {
-    const removeBlog = async (id) => {
-        await blogService.remove(id)
-        //const updatedBlogs = blogs.filter(b => b.id!==id)
-        //setBlogs(updatedBlogs)
-    }
-
     return (
         <div>
             {props.blogs.map(blog =>
-                    <Blog key={blog.id} blog={blog} removeBlog={removeBlog} />
-                // <Blog
-                //     key={anecdote.id}
-                //     anecdote={anecdote}
-                //     // handleVote={() => vote(anecdote)}
-                //     handleVote={() => {
-                //         props.voteForAnecdote(anecdote.id)
-                //         props.notify(`you voted ${anecdote.content}`, 5000)
-                //     }}
-                // />
+                    <Blog key={blog.id} blog={blog} removeBlog={props.removeBlog} updateBlog={props.updateBlog} />
             )}
         </div>
     )
@@ -42,9 +28,9 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    //voteForAnecdote,
     notify,
-
+    updateBlog,
+    removeBlog
 }
 
 //export default Blogs

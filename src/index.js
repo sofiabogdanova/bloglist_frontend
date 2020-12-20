@@ -6,7 +6,7 @@ import App from './App'
 import store from './store'
 
 import notificationReducer from './reducers/notificationReducer'
-import blogReducer, {initializeBlogs} from "./reducers/blogReducer";
+import blogReducer from "./reducers/blogReducer";
 
 const reducer = combineReducers({
     notification: notificationReducer,

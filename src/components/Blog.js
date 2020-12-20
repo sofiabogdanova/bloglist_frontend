@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import BlogDetails from './BlogDetails'
-import blogService from "../services/blogs";
 
-const Blog = ({ blog, removeBlog }) => {
+const Blog = ({ blog, removeBlog, updateBlog }) => {
   const [detailsVisible, setDetailsVisible] = useState(false)
 
   const likeBlog = async (event) => {
@@ -14,7 +13,7 @@ const Blog = ({ blog, removeBlog }) => {
       title: blog.title,
       url: blog.url
     }
-    await blogService.update(blog.id, likedBlog)
+    updateBlog(blog.id, likedBlog)
   }
 
   const toggleVisibility = (event) => {
