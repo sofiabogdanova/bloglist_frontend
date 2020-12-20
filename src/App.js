@@ -5,13 +5,16 @@ import BlogForm from './components/createBlog'
 import Toggleable from './components/Toggleable'
 import blogService from './services/blogs'
 import loginService from './services/login'
+import {notify} from "./reducers/notificationReducer";
+import {useDispatch} from "react-redux";
 
-const App = () => {
+const App = (props) => {
+  const dispatch = useDispatch()
   const [blogs, setBlogs] = useState([])
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [errorMessage, setErrorMessage] = useState(null)
-  const [successMessage, setSuccessMessage] = useState(null)
+  // const [errorMessage, setErrorMessage] = useState(null)
+  // const [successMessage, setSuccessMessage] = useState(null)
   const [user, setUser] = useState(null)
 
   const blogFormRef = useRef()
@@ -48,9 +51,10 @@ const App = () => {
       setUsername('')
       setPassword('')
     } catch (exception) {
-      setErrorMessage('Wrong username or password')
+      dispatch(notify('Wrong username or password', true, 5000))
+      //setErrorMessage('Wrong username or password')
       setTimeout(() => {
-        setErrorMessage(null)
+        //setErrorMessage(null)
       }, 5000)
     }
   }
@@ -70,14 +74,15 @@ const App = () => {
       const newBlogs = [...blogs, newBlog]
       setBlogs(newBlogs)
       blogFormRef.current.toggleVisibility()
-      setSuccessMessage(`A new blog ${blog.title} by ${blog.author} added`)
+      //setSuccessMessage(`A new blog ${blog.title} by ${blog.author} added`)
+      dispatch(notify(`A new blog ${blog.title} by ${blog.author} added`,false, 5000))
       setTimeout(() => {
-        setSuccessMessage(null)
+        //setSuccessMessage(null)
       }, 5000)
     } catch (exception) {
-      setErrorMessage('Error while creating blog')
+      //setErrorMessage('Error while creating blog')
       setTimeout(() => {
-        setErrorMessage(null)
+        //setErrorMessage(null)
       }, 5000)
     }
   }
@@ -124,8 +129,7 @@ const App = () => {
   return (
     <div>
       <h2>blogs</h2>
-      <Notification message={errorMessage} isError={true}/>
-      <Notification message={successMessage} isError={false}/>
+      <Notification />
       {blogs.map(blog =>
         <Blog key={blog.id} blog={blog} removeBlog={removeBlog}/>
       )}

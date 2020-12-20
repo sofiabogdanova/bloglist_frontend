@@ -1,17 +1,21 @@
 import React from 'react'
+import {useSelector, useDispatch} from 'react-redux'
 
 import '../index.css'
 
-const Notification = ({ message, isError }) => {
-  if (message === null) {
-    return null
-  }
-
-  let className = isError ? 'error' : 'success'
+const Notification = () => {
+  const notification = useSelector((reducer) => {
+    return reducer.notification
+  })
+  const message = notification.message
+  let className = notification.isError ? 'error' : 'success'
   return (
-    <div className={className}>
-      {message}
-    </div>
+      <div>
+        {message && <div className={className}>
+          {message}
+        </div>}
+      </div>
+
   )
 }
 
