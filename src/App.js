@@ -22,36 +22,37 @@ const App = () => {
     padding: 5
   }
   return (
-    <Router>
-      <div>
-        <Link style={padding} to="/">home</Link>
-        <Link style={padding} to="/blogs">blogs</Link>
-        <Link style={padding} to="/users">users</Link>
-      </div>
+    <div className="container">
+      <Router>
+        <div>
+          <Link style={padding} to="/">home</Link>
+          <Link style={padding} to="/blogs">blogs</Link>
+          <Link style={padding} to="/users">users</Link>
+        </div>
 
-      <h2>blogs</h2>
-      <Notification/>
-      <UserForm/>
-      <br/>
+        <h2>blogs</h2>
+        <Notification/>
+        <UserForm/>
+        <br/>
 
-      <Switch>
-        <Route path="/blogs/:id">
-          <DetailedBlog />
-        </Route>
-        <Route path="/blogs">
-          <Blogs />
-        </Route>
-        <Route path="/users/:id">
-          <User />
-        </Route>
-        <Route path="/users">
-          <Users />
-        </Route>
-        <Route path="/">
-        </Route>
-      </Switch>
+        <Switch>
+          <Route path="/blogs/:id">
+            <DetailedBlog/>
+          </Route>
+          <Route path="/blogs">
+            <Blogs/>
+          </Route>
+          <Route path="/users/:id">
+            <User/>
+          </Route>
+          <Route path="/users">
+            <Users/>
+          </Route>
+          <Route path="/">
+          </Route>
+        </Switch>
 
-    </Router>
+      </Router></div>
   )
 }
 

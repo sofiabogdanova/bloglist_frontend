@@ -2,12 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { initializeUsers } from '../reducers/usersReducer'
 import { connect } from 'react-redux'
+import { Table } from 'react-bootstrap'
 
 const Users = (props) => {
   return (
     <div>
       <h1>Users</h1>
-      <table>
+      <Table striped>
         <tr>
           <th></th>
           <th>blogs created</th>
@@ -18,7 +19,7 @@ const Users = (props) => {
             <td>{u.blogs.length}</td>
           </tr>
         )}
-      </table>
+      </Table>
     </div>
   )
 }

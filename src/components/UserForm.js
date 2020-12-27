@@ -5,6 +5,7 @@ import BlogForm from './createBlog'
 import Toggleable from './Toggleable'
 import { createBlog } from '../reducers/blogReducer'
 import { login, logout } from '../reducers/userReducer'
+import { Button } from 'react-bootstrap'
 
 const UserForm = (props) => {
   const [username, setUsername] = useState('')
@@ -56,14 +57,14 @@ const UserForm = (props) => {
       <div>
         <p>{user.username} logged-in</p>
       </div>
-      <button type="submit">logout</button>
+      <Button type="submit" variant="primary">logout</Button>
     </form>
   )
 
   const loginForm = () => (
     <form onSubmit={handleLogin}>
-      <div>
-        username
+      <div className="form-group">
+        <label htmlFor="username">username </label>
         <input id="username"
           type="text"
           value={username}
@@ -72,7 +73,7 @@ const UserForm = (props) => {
         />
       </div>
       <div>
-        password
+        <label htmlFor="password">password </label>
         <input id="password"
           type="password"
           value={password}
@@ -80,7 +81,7 @@ const UserForm = (props) => {
           onChange={({ target }) => setPassword(target.value)}
         />
       </div>
-      <button type="submit" id="login">login</button>
+      <Button type="submit" variant="primary" id="login">login</Button>
     </form>
   )
 
@@ -90,6 +91,7 @@ const UserForm = (props) => {
       {loggedIn &&
       <div>
         {loggedInForm()}
+        <br/>
         <Toggleable buttonLabel="new blog" ref={blogFormRef}>
           <BlogForm addBlog={addBlog}/>
         </Toggleable>

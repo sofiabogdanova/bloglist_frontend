@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 
 import { notify } from '../reducers/notificationReducer'
 import { removeBlog, updateBlog } from '../reducers/blogReducer'
+import { Button } from 'react-bootstrap'
 
 const DetailedBlog = (props) => {
   const [comment, setComment] = useState('')
@@ -55,7 +56,7 @@ const DetailedBlog = (props) => {
       </div>
       <div className="blogLikes">
         {blog.likes}
-        <button onClick={like}>like</button>
+        <Button onClick={like} variant="success">like</Button>
       </div>
       <div>
         added by {blog.author}
@@ -63,7 +64,7 @@ const DetailedBlog = (props) => {
       <br/>
       {
         showRemoveButton() &&
-        <button style={removeButtonStyle} onClick={confirmDeletion} variant="primary">remove</button>
+        <Button variant="danger" style={removeButtonStyle} onClick={confirmDeletion}>remove</Button>
       }
       <h2>comments</h2>
       <form onSubmit={addComment}>
@@ -71,7 +72,7 @@ const DetailedBlog = (props) => {
           <input value={comment} onChange={handleCommentChange} id='comment'/>
         </div>
 
-        <button type="submit">comment</button>
+        <Button type="submit" variant="success">comment</Button>
       </form>
       <ul>
         {blog.comments.map(comment =>
