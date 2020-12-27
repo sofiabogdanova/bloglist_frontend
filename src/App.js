@@ -8,6 +8,7 @@ import { initializeUsers } from './reducers/usersReducer'
 import Blogs from './components/Blogs'
 import UserForm from './components/UserForm'
 import Users from './components/Users'
+import User from './components/User'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -30,16 +31,19 @@ const App = () => {
       <h2>blogs</h2>
       <Notification/>
       <UserForm/>
+      <br/>
 
       <Switch>
         <Route path="/blogs">
           <Blogs />
         </Route>
+        <Route path="/users/:id">
+          <User />
+        </Route>
         <Route path="/users">
           <Users />
         </Route>
         <Route path="/">
-          <Blogs />
         </Route>
       </Switch>
 

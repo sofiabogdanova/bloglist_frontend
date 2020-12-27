@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { initializeUsers } from '../reducers/usersReducer'
 import { connect } from 'react-redux'
 
@@ -13,7 +14,7 @@ const Users = (props) => {
         </tr>
         {props.users.map(u =>
           <tr key={u.id}>
-            <td>{u.username}</td>
+            <td><Link to={`/users/${u.id}`}>{u.username}</Link></td>
             <td>{u.blogs.length}</td>
           </tr>
         )}
