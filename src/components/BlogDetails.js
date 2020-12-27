@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 
 const BlogDetails = ({ blog, removeBlog, likeBlog }) => {
@@ -12,8 +12,6 @@ const BlogDetails = ({ blog, removeBlog, likeBlog }) => {
     user.token = reducer.user.token
   })
 
-  const [likes, setLikes] = useState(blog.likes)
-
   const confirmDeletion = async () => {
     if (window.confirm(`Remove blog "${blog.title}"?`)) {
       await removeBlog(blog.id)
@@ -22,8 +20,6 @@ const BlogDetails = ({ blog, removeBlog, likeBlog }) => {
 
   const like = () => {
     likeBlog()
-    const newLikes = likes + 1
-    setLikes(newLikes)
   }
 
   const showRemoveButton = () => {
@@ -42,7 +38,7 @@ const BlogDetails = ({ blog, removeBlog, likeBlog }) => {
         {blog.url}
       </div>
       <div className="blogLikes">
-        {likes}
+        {blog.likes}
         <button onClick={like}>like</button>
       </div>
       {

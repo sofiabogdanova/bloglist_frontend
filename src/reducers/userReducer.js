@@ -4,7 +4,8 @@ import { notify } from './notificationReducer'
 
 const initialState = {
   token: '',
-  username: ''
+  username: '',
+  id: ''
 }
 
 export const login = (username, password) => {
@@ -40,18 +41,18 @@ export const logout = () => {
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
   case 'LOGIN': {
-    const token = action.data.token
-    const username = action.data.username
     return {
-      token: token,
-      username: username
+      token: action.data.token,
+      username: action.data.username,
+      id: action.data.id
     }
   }
 
   case 'LOGOUT': {
     return {
       token: '',
-      username: ''
+      username: '',
+      id: ''
     }
   }
 

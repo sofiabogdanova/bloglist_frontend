@@ -9,6 +9,7 @@ import Blogs from './components/Blogs'
 import UserForm from './components/UserForm'
 import Users from './components/Users'
 import User from './components/User'
+import DetailedBlog from './components/DetailedBlog'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -34,6 +35,9 @@ const App = () => {
       <br/>
 
       <Switch>
+        <Route path="/blogs/:id">
+          <DetailedBlog />
+        </Route>
         <Route path="/blogs">
           <Blogs />
         </Route>
