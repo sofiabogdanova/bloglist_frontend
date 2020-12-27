@@ -43,7 +43,7 @@ const BlogDetails = ({ blog, removeBlog, likeBlog }) => {
       </div>
       {
         showRemoveButton() &&
-                <button style={removeButtonStyle} onClick={confirmDeletion} variant="primary">remove</button>
+        <button style={removeButtonStyle} onClick={confirmDeletion} variant="primary">remove</button>
       }
     </div>
   )
