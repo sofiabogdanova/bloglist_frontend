@@ -6,7 +6,7 @@ import Toggleable from './Toggleable'
 import { createBlog } from '../reducers/blogReducer'
 import { login, logout } from '../reducers/userReducer'
 
-const User = (props) => {
+const UserForm = (props) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
@@ -29,13 +29,6 @@ const User = (props) => {
     props.login(username, password)
     setUsername(user.username)
     setPassword('')
-    // try {
-    //
-    // } catch {
-    //   dispatch(notify('Wrong username or password', true, 5000))
-    //   setTimeout(() => {
-    //   }, 5000)
-    // }
   }
 
   const handleLogout = async () => {
@@ -117,6 +110,5 @@ const mapDispatchToProps = {
   logout
 }
 
-const ConnectedUser = connect(mapStateToProps, mapDispatchToProps)(User)
+const ConnectedUser = connect(mapStateToProps, mapDispatchToProps)(UserForm)
 export default ConnectedUser
-//export default User
