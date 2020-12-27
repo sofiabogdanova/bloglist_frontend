@@ -1,6 +1,17 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 
 const BlogDetails = ({ blog, removeBlog, likeBlog }) => {
+  const user = {
+    username: '',
+    token: ''
+  }
+
+  useSelector((reducer) => {
+    user.username = reducer.user.username
+    user.token = reducer.user.token
+  })
+
   const [likes, setLikes] = useState(blog.likes)
 
   const confirmDeletion = async () => {
@@ -16,7 +27,7 @@ const BlogDetails = ({ blog, removeBlog, likeBlog }) => {
   }
 
   const showRemoveButton = () => {
-    const user = JSON.parse(localStorage.getItem('loggedBlogListUser'))
+    //JSON.parse(localStorage.getItem('loggedBlogListUser'))
     return user.username === blog.user.username
   }
 

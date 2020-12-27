@@ -27,3 +27,5 @@ yarn-error.log*
 /.idea/misc.xml
 /.idea/modules.xml
 /.idea/bloglist_frontend.iml
+/.idea/inspectionProfiles/
+/.idea/codeStyles/Project.xml
